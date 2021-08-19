@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_navigation_multiple_screens/dummy_data.dart';
+import 'package:flutter_navigation_multiple_screens/dummy_datas/dummy_data.dart';
 import 'package:flutter_navigation_multiple_screens/widgets/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
