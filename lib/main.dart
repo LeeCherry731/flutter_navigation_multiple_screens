@@ -3,7 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation_multiple_screens/screens/categories_screen.dart';
 import 'package:flutter_navigation_multiple_screens/screens/category_meals_screen.dart';
+import 'package:flutter_navigation_multiple_screens/screens/filters_screen.dart';
 import 'package:flutter_navigation_multiple_screens/screens/meal_detail_screen.dart';
+import 'package:flutter_navigation_multiple_screens/screens/tabs_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: "Kindacode.com",
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        accentColor: Color.fromRGBO(245, 145, 0, 1),
+        accentColor: Color.fromRGBO(242, 104, 28, 1),
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -34,9 +36,10 @@ class MyApp extends StatelessWidget {
       // home: CategoriesScreen(),
       initialRoute: '/',
       routes: {
-        '/': (ctx) => CategoriesScreen(),
+        '/': (ctx) => TabsScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        FilterScreen.routeName: (ctx) => FilterScreen(),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);
