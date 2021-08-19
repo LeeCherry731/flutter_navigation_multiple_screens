@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: "Kindacode.com",
       theme: ThemeData(
         primarySwatch: Colors.amber,
-        accentColor: Colors.pink,
+        accentColor: Color.fromRGBO(245, 145, 0, 1),
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -37,6 +37,13 @@ class MyApp extends StatelessWidget {
         '/': (ctx) => CategoriesScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        // return MaterialPageRoute(builder: (ctx) => CategoryMealsScreen());
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }

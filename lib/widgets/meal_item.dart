@@ -3,6 +3,7 @@ import 'package:flutter_navigation_multiple_screens/models/meal.dart';
 import 'package:flutter_navigation_multiple_screens/screens/meal_detail_screen.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
@@ -11,6 +12,7 @@ class MealItem extends StatelessWidget {
 
   const MealItem(
       {Key? key,
+      required this.id,
       required this.title,
       required this.imageUrl,
       required this.duration,
@@ -51,7 +53,7 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(ctx) {
-    Navigator.of(ctx).pushNamed(MealDetailScreen.routeName, arguments: []);
+    Navigator.of(ctx).pushNamed(MealDetailScreen.routeName, arguments: id);
   }
 
   @override
