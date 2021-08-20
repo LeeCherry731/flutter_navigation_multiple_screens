@@ -1,33 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_navigation_multiple_screens/models/meal.dart';
 import 'package:flutter_navigation_multiple_screens/screens/categories_screen.dart';
 import 'package:flutter_navigation_multiple_screens/screens/favorites_screen.dart';
-import 'package:flutter_navigation_multiple_screens/screens/ios_screen.dart';
 import 'package:flutter_navigation_multiple_screens/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({Key? key}) : super(key: key);
+  final List<Meal> favoriteMeals;
+  const TabsScreen({Key? key, required this.favoriteMeals}) : super(key: key);
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, dynamic>> _pages = [
-    {
-      'page': CategoriesScreen(),
-      'title': 'Categories',
-    },
-    {
-      'page': FavoritesScreen(),
-      'title': 'Favorites',
-    },
-    // {
-    //   'page': IosScreen(),
-    //   'title': 'Iso',
-    // }
-  ];
-
+  List<Map<String, dynamic>> _pages = [];
   int _selectedPageIndex = 0;
+
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesScreen(),
+        'title': 'Categories',
+      },
+      {
+        'page': FavoritesScreen(favoriteMeals: widget.favoriteMeals),
+        'title': 'Favorites',
+      },
+    ];
+    super.initState();
+  }
 
   @override
   void _selectPage(int index) {
@@ -63,11 +65,6 @@ class _TabsScreenState extends State<TabsScreen> {
             icon: Icon(Icons.star),
             label: 'Favorites',
           ),
-          // BottomNavigationBarItem(
-          //   backgroundColor: Theme.of(context).primaryColor,
-          //   icon: Icon(Icons.phone_iphone),
-          //   label: 'Ios',
-          // ),
         ],
       ),
     );
