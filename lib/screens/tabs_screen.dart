@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_navigation_multiple_screens/screens/categories_screen.dart';
 import 'package:flutter_navigation_multiple_screens/screens/favorites_screen.dart';
+import 'package:flutter_navigation_multiple_screens/screens/ios_screen.dart';
 import 'package:flutter_navigation_multiple_screens/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -20,6 +21,10 @@ class _TabsScreenState extends State<TabsScreen> {
       'page': FavoritesScreen(),
       'title': 'Favorites',
     },
+    // {
+    //   'page': IosScreen(),
+    //   'title': 'Iso',
+    // }
   ];
 
   int _selectedPageIndex = 0;
@@ -34,14 +39,16 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MainDrawer(),
-      appBar: AppBar(
-        title: Text(_pages[_selectedPageIndex]['title']),
-      ),
+      appBar: _selectedPageIndex == 2
+          ? null
+          : AppBar(
+              title: Text(_pages[_selectedPageIndex]['title']),
+            ),
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPageIndex,
         selectedItemColor: Theme.of(context).accentColor,
-        unselectedItemColor: Colors.black45,
+        unselectedItemColor: Colors.black38,
         type: BottomNavigationBarType.shifting,
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,
@@ -56,6 +63,11 @@ class _TabsScreenState extends State<TabsScreen> {
             icon: Icon(Icons.star),
             label: 'Favorites',
           ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Theme.of(context).primaryColor,
+          //   icon: Icon(Icons.phone_iphone),
+          //   label: 'Ios',
+          // ),
         ],
       ),
     );
